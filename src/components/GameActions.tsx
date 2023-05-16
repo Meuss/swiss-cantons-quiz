@@ -71,26 +71,12 @@ const GameActions = () => {
           </Button>
         )}
         {gameStatus === "running" && (
-          <>
-            <Stack direction="row" spacing={2}>
-              <TextField
-                label="Enter Canton"
-                variant="outlined"
-                className="w-[300px]"
-                InputProps={{ inputRef: inputRef }}
-              />
-              <Button onClick={onGiveUp} variant="outlined">
-                Give Up
-              </Button>
-              <Button
-                onClick={onRestart}
-                variant="outlined"
-                endIcon={<RestartIcon />}
-              >
-                Restart
-              </Button>
-            </Stack>
-          </>
+          <TextField
+            label="Enter Canton"
+            variant="outlined"
+            className="w-[300px]"
+            InputProps={{ inputRef: inputRef }}
+          />
         )}
         {gameStatus === "ended" && (
           <Button
@@ -102,9 +88,23 @@ const GameActions = () => {
           </Button>
         )}
       </div>
-      <div>
+      <div className="flex items-center gap-4">
+        {gameStatus === "running" && (
+          <Stack direction="row" spacing={2}>
+            <Button onClick={onGiveUp} variant="outlined">
+              Give Up
+            </Button>
+            <Button
+              onClick={onRestart}
+              variant="outlined"
+              endIcon={<RestartIcon />}
+            >
+              Restart
+            </Button>
+          </Stack>
+        )}
         <div className="text-4xl font-bold">{displayTime()}</div>
-        <h1>Game Status: {gameStatus}</h1>
+        {/* <h1>Game Status: {gameStatus}</h1> */}
       </div>
     </div>
   );
