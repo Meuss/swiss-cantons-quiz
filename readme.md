@@ -33,5 +33,6 @@ yarn test:coverage
 - [ ] Game UI
 - [ ] Svg / canvas rendering
 - [ ] Leaderboard
+- [ ] Flag game mode
 - [ ] Netlify Setup
 - [ ] Testing

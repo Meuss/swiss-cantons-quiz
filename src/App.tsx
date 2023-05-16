@@ -25,7 +25,7 @@ const App = () => {
         <Provider store={store}>
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <div className="flex-1 bg-black bg-opacity-60">
+            <div className="flex-1 bg-slate-950">
               <div className="container py-8">
                 <div className="flex justify-end gap-4">
                   <LanguageIcon color="primary" />
