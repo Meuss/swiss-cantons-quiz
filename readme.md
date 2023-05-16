@@ -28,7 +28,6 @@ yarn test:coverage
 ## :memo: Todo
 
 - [x] Dev tools setup
-- [ ] Fix the homepage ~1d #bug @jane
 - [ ] Sub-task or description
 - [ ] Game logic
 - [ ] Game state
