@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import RestartIcon from "@mui/icons-material/Replay";
 import PlayIcon from "@mui/icons-material/PlayArrow";
 import Stack from "@mui/material/Stack";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startGame, giveUp, countdown, restartGame } from "../store/gameSlice";
 import { RootState } from "../store";
@@ -15,6 +15,14 @@ const GameActions = () => {
     (state: RootState) => state.game.countdown
   );
   const countdownRef = useRef<NodeJS.Timeout | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [gameStarted, setGameStarted] = useState(false);
+
+  useEffect(() => {
+    if (gameStarted && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [gameStarted]);
 
   useEffect(() => {
     if (gameStatus === "running" && countdownValue > 0) {
@@ -34,6 +42,7 @@ const GameActions = () => {
 
   const onStartGame = () => {
     dispatch(startGame());
+    setGameStarted(true);
   };
 
   const onGiveUp = () => {
@@ -68,6 +77,7 @@ const GameActions = () => {
                 label="Enter Canton"
                 variant="outlined"
                 className="w-[300px]"
+                InputProps={{ inputRef: inputRef }}
               />
               <Button onClick={onGiveUp} variant="outlined">
                 Give Up
