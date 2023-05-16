@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import LanguageIcon from "@mui/icons-material/LanguageOutlined";
 import store from "./store";
 import Game from "./components/Game";
+import Github from "./components/Github";
 import LangSwitcher from "./components/LangSwitcher";
 
 const darkTheme = createTheme({
@@ -27,18 +28,19 @@ const App = () => {
             <CssBaseline />
             <div className="flex-1 bg-slate-950">
               <div className="container py-8">
+                <Routes>
+                  <Route path="/" element={<Game />} />
+                </Routes>
                 <div className="flex justify-end gap-4">
                   <LanguageIcon color="primary" />
                   <LangSwitcher />
                 </div>
-                <Routes>
-                  <Route path="/" element={<Game />} />
-                </Routes>
               </div>
             </div>
           </ThemeProvider>
         </Provider>
       </BrowserRouter>
+      <Github />
       {process.env.NODE_ENV === "development" && (
         <div className="mq-helper pointer-events-none fixed bottom-2 left-2 bg-primary-500 p-1 text-xs font-normal text-black" />
       )}

@@ -42,6 +42,9 @@
 }
 
 @layer components {
+  #swiss-map {
+    max-width: 100%;
+  }
   #swiss-map path {
     transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
     stroke: theme("colors.slate.700");

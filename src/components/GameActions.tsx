@@ -2,26 +2,100 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RestartIcon from "@mui/icons-material/Replay";
 import PlayIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
 import Stack from "@mui/material/Stack";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { startGame, giveUp, countdown, restartGame } from "../store/gameSlice";
+import { RootState } from "../store";
 
 const GameActions = () => {
+  const dispatch = useDispatch();
+  const gameStatus = useSelector((state: RootState) => state.game.gameStatus);
+  const countdownValue = useSelector(
+    (state: RootState) => state.game.countdown
+  );
+  const countdownRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (gameStatus === "running" && countdownValue > 0) {
+      countdownRef.current = setInterval(() => {
+        dispatch(countdown());
+      }, 1000);
+    } else if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+    }
+
+    return () => {
+      if (countdownRef.current) {
+        clearInterval(countdownRef.current);
+      }
+    };
+  }, [gameStatus, countdownValue, dispatch]);
+
+  const onStartGame = () => {
+    dispatch(startGame());
+  };
+
+  const onGiveUp = () => {
+    dispatch(giveUp());
+  };
+
+  const onRestart = () => {
+    dispatch(restartGame());
+  };
+
+  const displayTime = () => {
+    const minutes = Math.floor(countdownValue / 60);
+    const seconds = countdownValue % 60;
+    return `0${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
   return (
-    <div>
-      <Stack direction="row" spacing={2}>
-        <Button variant="contained" endIcon={<PlayIcon />}>
-          Play
-        </Button>
-        <TextField label="Enter Canton" variant="outlined" />
-      </Stack>
-      <Stack direction="row" spacing={2}>
-        <Button variant="outlined" endIcon={<RestartIcon />}>
-          Restart
-        </Button>
-        <Button variant="contained" endIcon={<PauseIcon />}>
-          Pause
-        </Button>
-      </Stack>
+    <div className="mt-8 flex justify-between">
+      <div>
+        {gameStatus === "idle" && (
+          <Button
+            variant="contained"
+            endIcon={<PlayIcon />}
+            onClick={onStartGame}
+          >
+            Play
+          </Button>
+        )}
+        {gameStatus === "running" && (
+          <>
+            <Stack direction="row" spacing={2}>
+              <TextField
+                label="Enter Canton"
+                variant="outlined"
+                className="w-[300px]"
+              />
+              <Button onClick={onGiveUp} variant="outlined">
+                Give Up
+              </Button>
+              <Button
+                onClick={onRestart}
+                variant="outlined"
+                endIcon={<RestartIcon />}
+              >
+                Restart
+              </Button>
+            </Stack>
+          </>
+        )}
+        {gameStatus === "ended" && (
+          <Button
+            onClick={onRestart}
+            variant="outlined"
+            endIcon={<RestartIcon />}
+          >
+            Restart
+          </Button>
+        )}
+      </div>
+      <div>
+        <div className="text-4xl font-bold">{displayTime()}</div>
+        <h1>Game Status: {gameStatus}</h1>
+      </div>
     </div>
   );
 };

@@ -11,7 +11,7 @@ module.exports = {
         sans: ["Avenir", "sans-serif"],
       },
       colors: {
-        primary: {
+        secondary: {
           50: "#ebffff",
           100: "#cdfbff",
           200: "#a1f4ff",
@@ -24,7 +24,7 @@ module.exports = {
           900: "#124e67",
           950: "#053247",
         },
-        secondary: {
+        primary: {
           50: "#fff1f0",
           100: "#ffe0dd",
           200: "#ffc6c0",

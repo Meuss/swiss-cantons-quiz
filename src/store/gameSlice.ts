@@ -1,19 +1,43 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Game } from "../types/game";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: Game = {
-  started: false,
+interface GameState {
+  gameStatus: "idle" | "running" | "ended";
+  countdown: number;
+}
+
+const initialState: GameState = {
+  gameStatus: "idle",
+  countdown: 5 * 60,
 };
 
 const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    set: (state, action: PayloadAction<Game>) => {
-      return action.payload;
+    startGame: (state) => {
+      state.gameStatus = "running";
+    },
+    endGame: (state) => {
+      state.gameStatus = "ended";
+      state.countdown = 0;
+    },
+    giveUp: (state) => {
+      state.gameStatus = "ended";
+    },
+    restartGame: (state) => {
+      state.gameStatus = "running";
+      state.countdown = 5 * 60;
+    },
+    countdown: (state) => {
+      if (state.countdown > 0) {
+        state.countdown--;
+      } else {
+        state.gameStatus = "ended";
+      }
     },
   },
 });
 
-export const { set } = gameSlice.actions;
+export const { startGame, endGame, giveUp, countdown, restartGame } =
+  gameSlice.actions;
 export default gameSlice.reducer;
