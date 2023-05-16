@@ -28,7 +28,6 @@ yarn test:coverage
 ## :memo: Todo
 
 - [x] Dev tools setup
-- [ ] Sub-task or description
 - [ ] Game logic
 - [ ] Game state
 - [ ] Game UI
