@@ -59,7 +59,7 @@ const GameActions = () => {
     return `0${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
   return (
-    <div className="mt-8 flex justify-between">
+    <div className="mt-8 flex items-center justify-between">
       <div>
         {gameStatus === "idle" && (
           <Button

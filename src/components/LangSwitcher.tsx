@@ -12,7 +12,9 @@ const LanguageSwitcher = () => {
   const langBtn = (language: string) => {
     return (
       <button
-        className={i18n.language === language ? "text-primary-500" : ""}
+        className={
+          i18n.language === language ? "font-bold text-primary-500" : ""
+        }
         onClick={() => changeLanguage(language)}
       >
         {language.toUpperCase()}

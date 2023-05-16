@@ -1,6 +1,6 @@
 const Github = () => {
   return (
-    <div className="fixed bottom-2 right-2 rounded-full bg-slate-200 p-2">
+    <div className="rounded-full bg-slate-200 p-2">
       <a href="https://github.com/Meuss/swiss-cantons-quiz">
         <svg
           xmlns="http://www.w3.org/2000/svg"
