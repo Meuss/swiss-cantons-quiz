@@ -7,6 +7,10 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startGame, giveUp, countdown, restartGame } from "../store/gameSlice";
 import { RootState } from "../store";
+import { removeCanton } from "../store/remainingCantonsSlice";
+import { addGuessedCanton } from "../store/guessedCantonsSlice";
+import Score from "./Score";
+import Timer from "./Timer";
 
 const GameActions = () => {
   const dispatch = useDispatch();
@@ -40,6 +44,34 @@ const GameActions = () => {
     };
   }, [gameStatus, countdownValue, dispatch]);
 
+  // Managing text input
+  const [input, setInput] = useState<string>("");
+  const remainingCantons = useSelector(
+    (state: RootState) => state.remainingCantons.remainingCantons
+  );
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+  useEffect(() => {
+    // Check if input matches any of the translations in remainingCantons
+    const matchFound = Object.values(remainingCantons).some((translations) =>
+      translations.includes(input)
+    );
+
+    if (matchFound) {
+      // Find the canton abbreviation for the matching translation
+      const abbreviation = Object.keys(remainingCantons).find((key) =>
+        remainingCantons[key].includes(input)
+      );
+      if (abbreviation) {
+        dispatch(removeCanton(abbreviation));
+        dispatch(addGuessedCanton(abbreviation));
+      }
+      setInput("");
+    }
+  }, [input, dispatch, remainingCantons]);
+
   const onStartGame = () => {
     dispatch(startGame());
     setGameStarted(true);
@@ -53,11 +85,6 @@ const GameActions = () => {
     dispatch(restartGame());
   };
 
-  const displayTime = () => {
-    const minutes = Math.floor(countdownValue / 60);
-    const seconds = countdownValue % 60;
-    return `0${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-  };
   return (
     <div className="mt-8 flex items-center justify-between">
       <div>
@@ -76,6 +103,8 @@ const GameActions = () => {
             variant="outlined"
             className="w-[300px]"
             InputProps={{ inputRef: inputRef }}
+            onChange={handleInputChange}
+            value={input}
           />
         )}
         {gameStatus === "ended" && (
@@ -103,7 +132,10 @@ const GameActions = () => {
             </Button>
           </Stack>
         )}
-        <div className="text-4xl font-bold">{displayTime()}</div>
+        <div>
+          <Score />
+        </div>
+        <Timer />
         {/* <h1>Game Status: {gameStatus}</h1> */}
       </div>
     </div>
