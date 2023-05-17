@@ -1,4 +1,12 @@
 {
+  "title": "Quiz des cantons suisses",
+  "description": "Peux-tu nommer tous les cantons?",
+  "ui": {
+    "play": "Jouer",
+    "giveup": "Abandonner",
+    "restart": "Recommencer",
+    "name": "Nom du canton"
+  },
   "cantons": {
     "AG": "Argovie",
     "AI": "Appenzell Rhodes-Intérieures",

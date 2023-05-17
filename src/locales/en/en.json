@@ -1,4 +1,12 @@
 {
+  "title": "Swiss Canton Quiz",
+  "description": "Can you name all 26 Swiss cantons?",
+  "ui": {
+    "play": "Play",
+    "giveup": "Give up",
+    "restart": "Restart",
+    "name": "Canton name"
+  },
   "cantons": {
     "AG": "Aargau",
     "AI": "Appenzell Innerrhoden",

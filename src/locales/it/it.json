@@ -1,4 +1,12 @@
 {
+  "title": "Quiz sui cantoni svizzeri",
+  "description": "Può elencare tutti i cantoni?",
+  "ui": {
+    "play": "Gioco",
+    "giveup": "Rinuncia",
+    "restart": "Ricominciare",
+    "name": "Nome del cantone"
+  },
   "cantons": {
     "AG": "Argovia",
     "AI": "Appenzello Interno",

@@ -1,4 +1,12 @@
 {
+  "title": "Quiz der Schweizer Kantone",
+  "description": "Kannst du alle Kantone aufzählen?",
+  "ui": {
+    "play": "Spielen",
+    "giveup": "Aufgeben",
+    "restart": "Neu anfangen",
+    "name": "Name des Kantons"
+  },
   "cantons": {
     "AG": "Aargau",
     "AI": "Appenzell Innerrhoden",

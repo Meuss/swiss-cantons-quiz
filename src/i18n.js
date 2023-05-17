@@ -25,7 +25,7 @@ i18n
   // https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    fallbackLng: "en",
+    fallbackLng: "fr",
     // debug: true,
 
     interpolation: {

@@ -1,18 +1,20 @@
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import RestartIcon from "@mui/icons-material/Replay";
-import PlayIcon from "@mui/icons-material/PlayArrow";
-import Stack from "@mui/material/Stack";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startGame, giveUp, countdown, restartGame } from "../store/gameSlice";
 import { RootState } from "../store";
 import { removeCanton } from "../store/remainingCantonsSlice";
 import { addGuessedCanton } from "../store/guessedCantonsSlice";
+import { useTranslation } from "react-i18next";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import RestartIcon from "@mui/icons-material/Replay";
+import PlayIcon from "@mui/icons-material/PlayArrow";
+import Stack from "@mui/material/Stack";
 import Score from "./Score";
 import Timer from "./Timer";
 
 const GameActions = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const gameStatus = useSelector((state: RootState) => state.game.gameStatus);
   const countdownValue = useSelector(
@@ -94,12 +96,12 @@ const GameActions = () => {
             endIcon={<PlayIcon />}
             onClick={onStartGame}
           >
-            Play
+            {t("ui.play")}
           </Button>
         )}
         {gameStatus === "running" && (
           <TextField
-            label="Enter Canton"
+            label={t("ui.name")}
             variant="outlined"
             className="w-[300px]"
             InputProps={{ inputRef: inputRef }}
@@ -113,7 +115,7 @@ const GameActions = () => {
             variant="outlined"
             endIcon={<RestartIcon />}
           >
-            Restart
+            {t("ui.restart")}
           </Button>
         )}
       </div>
@@ -121,14 +123,14 @@ const GameActions = () => {
         {gameStatus === "running" && (
           <Stack direction="row" spacing={2}>
             <Button onClick={onGiveUp} variant="outlined">
-              Give Up
+              {t("ui.giveup")}
             </Button>
             <Button
               onClick={onRestart}
               variant="outlined"
               endIcon={<RestartIcon />}
             >
-              Restart
+              {t("ui.restart")}
             </Button>
           </Stack>
         )}
