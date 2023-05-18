@@ -37,6 +37,9 @@ yarn test:coverage
 ## :memo: Todo
 
 - Responsive & mobile
+- Score + Timer more visible
+- Timer change color
 - Game ended: share score on social media
 - Game ended: percentage vs other players
+- Fact: most forgotten canton
 - Testing
