@@ -5,9 +5,11 @@ interface GameState {
   countdown: number;
 }
 
+const timer = 1 * 10;
+
 const initialState: GameState = {
   gameStatus: "idle",
-  countdown: 5 * 60,
+  countdown: timer,
 };
 
 const gameSlice = createSlice({
@@ -24,10 +26,6 @@ const gameSlice = createSlice({
     giveUp: (state) => {
       state.gameStatus = "ended";
     },
-    restartGame: (state) => {
-      state.gameStatus = "running";
-      state.countdown = 5 * 60;
-    },
     countdown: (state) => {
       if (state.countdown > 0) {
         state.countdown--;
@@ -35,10 +33,11 @@ const gameSlice = createSlice({
         state.gameStatus = "ended";
       }
     },
+    reset: () => initialState,
   },
 });
 
-export const { startGame, endGame, giveUp, countdown, restartGame } =
+export const { startGame, endGame, giveUp, countdown, reset } =
   gameSlice.actions;
 
 export default gameSlice.reducer;

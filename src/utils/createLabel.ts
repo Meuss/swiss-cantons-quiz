@@ -29,3 +29,15 @@ export function createLabel(label: string): void {
     console.error("SVG container not found.");
   }
 }
+
+export function deleteLabels(): void {
+  const svgContainer = document.getElementById("swiss-map");
+  if (svgContainer) {
+    const textElements = svgContainer.querySelectorAll("text");
+    textElements.forEach((textElement) => {
+      svgContainer.removeChild(textElement);
+    });
+  } else {
+    console.error("SVG container not found.");
+  }
+}

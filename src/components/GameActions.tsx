@@ -1,9 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startGame, giveUp, countdown, restartGame } from "../store/gameSlice";
+import {
+  startGame,
+  giveUp,
+  countdown,
+  reset,
+  endGame,
+} from "../store/gameSlice";
 import { RootState } from "../store";
-import { removeCanton } from "../store/remainingCantonsSlice";
-import { addGuessedCanton } from "../store/guessedCantonsSlice";
+import {
+  removeCanton,
+  reset as resetRemainingCantons,
+} from "../store/remainingCantonsSlice";
+import {
+  addGuessedCanton,
+  reset as resetGuessedCantons,
+} from "../store/guessedCantonsSlice";
 import { useTranslation } from "react-i18next";
 import {
   normalizeDiacritics,
@@ -39,8 +51,9 @@ const GameActions = () => {
       countdownRef.current = setInterval(() => {
         dispatch(countdown());
       }, 1000);
-    } else if (countdownRef.current) {
+    } else if (gameStatus !== "idle" && countdownRef.current) {
       clearInterval(countdownRef.current);
+      dispatch(endGame());
     }
 
     return () => {
@@ -53,7 +66,7 @@ const GameActions = () => {
   // Managing text input
   const [input, setInput] = useState<string>("");
   const remainingCantons = useSelector(
-    (state: RootState) => state.remainingCantons.remainingCantons
+    (state: RootState) => state.remainingCantons
   );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,8 +110,10 @@ const GameActions = () => {
     dispatch(giveUp());
   };
 
-  const onRestart = () => {
-    dispatch(restartGame());
+  const onReset = () => {
+    dispatch(reset());
+    dispatch(resetRemainingCantons());
+    dispatch(resetGuessedCantons());
   };
 
   return (
@@ -117,7 +132,8 @@ const GameActions = () => {
           <TextField
             label={t("ui.name")}
             variant="outlined"
-            className="w-[300px]"
+            className="w-[300px] uppercase"
+            size="small"
             InputProps={{ inputRef: inputRef }}
             onChange={handleInputChange}
             value={input}
@@ -125,7 +141,7 @@ const GameActions = () => {
         )}
         {gameStatus === "ended" && (
           <Button
-            onClick={onRestart}
+            onClick={onReset}
             variant="outlined"
             endIcon={<RestartIcon />}
           >
@@ -140,7 +156,7 @@ const GameActions = () => {
               {t("ui.giveup")}
             </Button>
             <Button
-              onClick={onRestart}
+              onClick={onReset}
               variant="outlined"
               endIcon={<RestartIcon />}
             >

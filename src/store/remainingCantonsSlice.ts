@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "./index";
 import it from "../locales/it/it.json";
 import en from "../locales/en/en.json";
 import fr from "../locales/fr/fr.json";
@@ -36,9 +37,7 @@ const getAllCantonsFromAllLanguages = () => {
   return allCantons;
 };
 
-const initialState = {
-  remainingCantons: getAllCantonsFromAllLanguages(),
-};
+const initialState = getAllCantonsFromAllLanguages();
 
 const remainingCantonsSlice = createSlice({
   name: "cantons",
@@ -46,11 +45,14 @@ const remainingCantonsSlice = createSlice({
   reducers: {
     removeCanton: (state, action: PayloadAction<string>) => {
       const abbreviation = action.payload;
-      delete state.remainingCantons[abbreviation];
+      delete state[abbreviation];
     },
+    reset: () => initialState,
   },
 });
 
-export const { removeCanton } = remainingCantonsSlice.actions;
+export const missingCantons = (state: RootState) => state.remainingCantons;
+
+export const { removeCanton, reset } = remainingCantonsSlice.actions;
 
 export default remainingCantonsSlice.reducer;

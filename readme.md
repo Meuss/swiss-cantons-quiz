@@ -27,14 +27,8 @@ yarn test:coverage
 
 ## :memo: Todo
 
-- [x] Dev tools setup
-- [x] Svg / canvas rendering
-- [x] Cantons guesses logic
-- [x] Names on map
-- [ ] Game ending, finish popup
-- [ ] Game restart: cantons
-- [ ] Played x times, stats
-- [ ] Share social media
-- [ ] Netlify Setup
-- [ ] Testing
-- [ ] Leaderboard
+- Game ended: share score on social media
+- Game ended: percentage vs other players
+- Played x times
+- Netlify Setup
+- Testing

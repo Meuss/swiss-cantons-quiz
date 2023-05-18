@@ -51,7 +51,11 @@
   }
   #swiss-map path.guessed {
     fill: theme("colors.sky.500");
-    stroke: theme("colors.sky.500");
+    stroke: theme("colors.sky.900");
+  }
+  #swiss-map path.missing {
+    fill: theme("colors.red.500");
+    stroke: theme("colors.red.900");
   }
   #swiss-map path {
     transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
