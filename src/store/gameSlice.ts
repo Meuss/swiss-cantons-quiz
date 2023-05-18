@@ -40,4 +40,5 @@ const gameSlice = createSlice({
 
 export const { startGame, endGame, giveUp, countdown, restartGame } =
   gameSlice.actions;
+
 export default gameSlice.reducer;

@@ -28,11 +28,12 @@ yarn test:coverage
 ## :memo: Todo
 
 - [x] Dev tools setup
-- [ ] Game logic
-- [ ] Game state
-- [ ] Game UI
-- [ ] Svg / canvas rendering
-- [ ] Leaderboard
-- [ ] Flag game mode
+- [x] Svg / canvas rendering
+- [x] Cantons guesses logic
+- [ ] Names on map
+- [ ] Game ending
+- [ ] Game restart: cantons
+- [ ] Share social media
 - [ ] Netlify Setup
 - [ ] Testing
+- [ ] Leaderboard

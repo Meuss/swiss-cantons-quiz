@@ -49,6 +49,10 @@
     max-width: 100%;
     height: auto;
   }
+  #swiss-map path.guessed {
+    fill: theme("colors.sky.500");
+    stroke: theme("colors.sky.500");
+  }
   #swiss-map path {
     transition: all cubic-bezier(1, 0, 0, 1) 0.3s;
     stroke: theme("colors.slate.700");

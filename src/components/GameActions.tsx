@@ -5,6 +5,10 @@ import { RootState } from "../store";
 import { removeCanton } from "../store/remainingCantonsSlice";
 import { addGuessedCanton } from "../store/guessedCantonsSlice";
 import { useTranslation } from "react-i18next";
+import {
+  normalizeDiacritics,
+  replaceSpecialChars,
+} from "../utils/specialChars";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RestartIcon from "@mui/icons-material/Replay";
@@ -56,15 +60,25 @@ const GameActions = () => {
     setInput(e.target.value);
   };
   useEffect(() => {
-    // Check if input matches any of the translations in remainingCantons
+    const normalizedInput = normalizeDiacritics(
+      replaceSpecialChars(input.toLowerCase())
+    );
+
     const matchFound = Object.values(remainingCantons).some((translations) =>
-      translations.includes(input)
+      translations
+        .map((translation) =>
+          normalizeDiacritics(replaceSpecialChars(translation.toLowerCase()))
+        )
+        .includes(normalizedInput)
     );
 
     if (matchFound) {
-      // Find the canton abbreviation for the matching translation
       const abbreviation = Object.keys(remainingCantons).find((key) =>
-        remainingCantons[key].includes(input)
+        remainingCantons[key]
+          .map((translation) =>
+            normalizeDiacritics(replaceSpecialChars(translation.toLowerCase()))
+          )
+          .includes(normalizedInput)
       );
       if (abbreviation) {
         dispatch(removeCanton(abbreviation));
