@@ -7,6 +7,7 @@
     "restart": "Recommencer",
     "name": "Nom du canton"
   },
+  "playCount": "Nombre de fois où ce quiz a été joué",
   "cantons": {
     "AG": "Argovie",
     "AI": "Appenzell Rhodes-Intérieures",

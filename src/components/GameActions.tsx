@@ -104,6 +104,28 @@ const GameActions = () => {
   const onStartGame = () => {
     dispatch(startGame());
     setGameStarted(true);
+    recordPlay().catch((error) => {
+      console.error("Failed to record play:", error);
+    });
+  };
+
+  interface ResponseData {
+    message?: string;
+    error?: string;
+  }
+
+  const recordPlay = async () => {
+    const response = await fetch("/.netlify/functions/recordPlay", {
+      method: "POST",
+    });
+    const data = (await response.json()) as ResponseData;
+
+    if (!response.ok) {
+      console.error("Failed to record play:", data.error);
+      return;
+    }
+
+    console.log("Play recorded successfully");
   };
 
   const onGiveUp = () => {

@@ -9,6 +9,7 @@ import store from "./store";
 import Game from "./components/Game";
 import Github from "./components/Github";
 import LangSwitcher from "./components/LangSwitcher";
+import PlayCount from "./components/PlayCount";
 
 const darkTheme = createTheme({
   typography: {
@@ -45,12 +46,15 @@ const App = () => {
                 </Routes>
               </div>
             </div>
-            <div className="sticky bottom-2 mr-4 flex items-center justify-end gap-8">
-              <div className="flex gap-4">
-                <LanguageIcon color="primary" />
-                <LangSwitcher />
+            <div className="sticky bottom-2 flex items-center justify-between px-10">
+              <PlayCount />
+              <div className="flex items-center justify-between gap-8">
+                <div className="flex gap-4">
+                  <LanguageIcon color="primary" />
+                  <LangSwitcher />
+                </div>
+                <Github />
               </div>
-              <Github />
             </div>
           </ThemeProvider>
         </Provider>

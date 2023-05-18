@@ -7,6 +7,7 @@
     "restart": "Neu anfangen",
     "name": "Name des Kantons"
   },
+  "playCount": "Wie oft dieses Quiz gespielt wurde",
   "cantons": {
     "AG": "Aargau",
     "AI": "Appenzell Innerrhoden",

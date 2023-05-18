@@ -7,6 +7,7 @@
     "restart": "Ricominciare",
     "name": "Nome del cantone"
   },
+  "playCount": "Numero di volte in cui questo quiz è stato giocato",
   "cantons": {
     "AG": "Argovia",
     "AI": "Appenzello Interno",
