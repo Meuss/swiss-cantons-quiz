@@ -58,6 +58,10 @@
     stroke: theme("colors.slate.700");
     fill: theme("colors.slate.900");
   }
+  #swiss-map text {
+    fill: theme("colors.slate.100");
+    @apply text-2xl font-bold;
+  }
 }
 
 @layer utilities {

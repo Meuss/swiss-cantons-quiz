@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { ReactComponent as SwissMap } from "../assets/switzerland.svg";
 import { selectGuessedCantons } from "../store/guessedCantonsSlice";
 import { useEffect } from "react";
+import { createLabel } from "../utils/createLabel";
 
 const Map = () => {
   const guessedCantons = useSelector(selectGuessedCantons);
@@ -11,6 +12,7 @@ const Map = () => {
       const element = document.getElementById(canton);
       if (element) {
         element.classList.add("guessed");
+        createLabel(canton);
       }
     });
   }, [guessedCantons]);

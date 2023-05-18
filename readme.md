@@ -30,9 +30,10 @@ yarn test:coverage
 - [x] Dev tools setup
 - [x] Svg / canvas rendering
 - [x] Cantons guesses logic
-- [ ] Names on map
-- [ ] Game ending
+- [x] Names on map
+- [ ] Game ending, finish popup
 - [ ] Game restart: cantons
+- [ ] Played x times, stats
 - [ ] Share social media
 - [ ] Netlify Setup
 - [ ] Testing
