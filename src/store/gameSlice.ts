@@ -5,7 +5,7 @@ interface GameState {
   countdown: number;
 }
 
-const timer = 1 * 10;
+const timer = 1.5 * 60;
 
 const initialState: GameState = {
   gameStatus: "idle",
