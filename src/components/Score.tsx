@@ -9,7 +9,9 @@ const Score = () => {
 
   return (
     <div>
-      <div className="text-4xl font-bold">{score}/26</div>
+      <div className="text-xl font-bold sm:text-4xl">
+        <span className="text-primary-500">{score}</span>/26
+      </div>
     </div>
   );
 };

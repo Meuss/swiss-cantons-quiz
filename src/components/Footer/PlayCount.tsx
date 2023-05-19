@@ -9,6 +9,10 @@ const PlayCount: React.FC = () => {
 
   useEffect(() => {
     const fetchPlayCount = async () => {
+      // don't run in yarn dev mode
+      if (window.location.href === "http://127.0.0.1:5173/") {
+        return;
+      }
       try {
         const response = await fetch("/.netlify/functions/getPlayCount", {
           method: "GET",
@@ -31,11 +35,9 @@ const PlayCount: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h2>
-        {t("playCount")}: {count}
-      </h2>
-    </div>
+    <h2 className="text-xs lg:text-sm">
+      {t("playCount")}: {count}
+    </h2>
   );
 };
 

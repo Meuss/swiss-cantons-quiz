@@ -5,13 +5,19 @@ module.exports = {
     extend: {
       container: {
         center: true,
-        padding: "2rem",
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
+        },
       },
       fontFamily: {
-        sans: ["Avenir", "sans-serif"],
+        sans: ["Inter", "Avenir", "Roboto", "sans-serif"],
       },
       colors: {
-        secondary: {
+        primary: {
           50: "#ebffff",
           100: "#cdfbff",
           200: "#a1f4ff",
@@ -24,7 +30,7 @@ module.exports = {
           900: "#124e67",
           950: "#053247",
         },
-        primary: {
+        secondary: {
           50: "#fff1f0",
           100: "#ffe0dd",
           200: "#ffc6c0",

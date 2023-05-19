@@ -4,16 +4,13 @@ import { Provider } from "react-redux";
 import "./i18n";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import LanguageIcon from "@mui/icons-material/LanguageOutlined";
 import store from "./store";
 import Game from "./components/Game";
-import Github from "./components/Github";
-import LangSwitcher from "./components/LangSwitcher";
-import PlayCount from "./components/PlayCount";
+import Footer from "./components/Footer";
 
 const darkTheme = createTheme({
   typography: {
-    fontFamily: ["Avenir", "Roboto"].join(","),
+    fontFamily: ["Inter", "Avenir", "Roboto", "sans-serif"].join(","),
   },
   palette: {
     mode: "dark",
@@ -39,22 +36,11 @@ const App = () => {
         <Provider store={store}>
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <div className="flex-1">
-              <div className="container py-8">
-                <Routes>
-                  <Route path="/" element={<Game />} />
-                </Routes>
-              </div>
-            </div>
-            <div className="sticky bottom-2 flex items-center justify-between px-10">
-              <PlayCount />
-              <div className="flex items-center justify-between gap-8">
-                <div className="flex gap-4">
-                  <LanguageIcon color="primary" />
-                  <LangSwitcher />
-                </div>
-                <Github />
-              </div>
+            <div className="container flex h-full flex-1 flex-col justify-between py-8">
+              <Routes>
+                <Route path="/" element={<Game />} />
+              </Routes>
+              <Footer />
             </div>
           </ThemeProvider>
         </Provider>

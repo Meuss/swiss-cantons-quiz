@@ -14,9 +14,9 @@
 ```bash
 # Install dependencies
 yarn
-# Start dev server http://127.0.0.1:5173/
+# Dev server
 yarn dev
-# Run netlify functions locally
+# Dev server with local netlify functions
 netlify dev
 # Build for production
 yarn build
@@ -36,9 +36,6 @@ yarn test:coverage
 
 ## :memo: Todo
 
-- Responsive & mobile
-- Score + Timer more visible
-- Timer change color
 - Game ended: share score on social media
 - Game ended: percentage vs other players
 - Fact: most forgotten canton

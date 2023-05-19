@@ -1,7 +1,12 @@
 const Github = () => {
   return (
-    <div className="rounded-full bg-slate-200 p-2">
-      <a href="https://github.com/Meuss/swiss-cantons-quiz">
+    <div className="h-8 w-8 rounded-full bg-primary-500 p-1">
+      <a
+        href="https://github.com/Meuss/swiss-cantons-quiz"
+        target="_blank"
+        title="Github repository"
+        rel="noreferrer"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
