@@ -11,7 +11,7 @@ import PlayBtn from "./GameBtns/PlayBtn";
 import GiveUpBtn from "./GameBtns/GiveUpBtn";
 import Input from "./GameBtns/Input";
 
-const GameActions = () => {
+const Game = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const gameStatus = useSelector((state: RootState) => state.game.gameStatus);
@@ -58,4 +58,4 @@ const GameActions = () => {
   );
 };
 
-export default GameActions;
+export default Game;

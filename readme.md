@@ -28,10 +28,6 @@ yarn lint
 yarn format
 # Type check code
 yarn typecheck
-# Run tests
-yarn test
-yarn test:watch
-yarn test:coverage
 ```
 
 ## :memo: Todo
@@ -39,4 +35,3 @@ yarn test:coverage
 - Game ended: share score on social media
 - Game ended: percentage vs other players
 - Fact: most forgotten canton
-- Testing
