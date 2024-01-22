@@ -5,7 +5,7 @@ Airtable.configure({
 });
 
 exports.handler = async function () {
-  const base = new Airtable();
+  const base = new Airtable().base(process.env.AIRTABLE_BASE_ID);
 
   try {
     await base("Plays").create([
