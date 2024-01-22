@@ -1,9 +1,11 @@
 const Airtable = require("airtable");
 
+Airtable.configure({
+  apiKey: process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN,
+});
+
 exports.handler = async function () {
-  const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-    process.env.AIRTABLE_BASE_ID
-  );
+  const base = new Airtable();
 
   try {
     await base("Plays").create([
