@@ -26,6 +26,9 @@ importers:
       abort-controller:
         specifier: ^3.0.0
         version: 3.0.0
+      abortcontroller-polyfill:
+        specifier: ^1.7.5
+        version: 1.7.8
       airtable:
         specifier: ^0.12.2
         version: 0.12.2
