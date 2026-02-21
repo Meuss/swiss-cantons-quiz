@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./index";
-import it from "../locales/it/it.json";
-import en from "../locales/en/en.json";
-import fr from "../locales/fr/fr.json";
-import de from "../locales/de/de.json";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './index';
+import it from '../locales/it/it.json';
+import en from '../locales/en/en.json';
+import fr from '../locales/fr/fr.json';
+import de from '../locales/de/de.json';
 
 interface CantonType {
   [key: string]: string;
@@ -40,7 +40,7 @@ const getAllCantonsFromAllLanguages = () => {
 const initialState = getAllCantonsFromAllLanguages();
 
 const remainingCantonsSlice = createSlice({
-  name: "cantons",
+  name: 'cantons',
   initialState,
   reducers: {
     removeCanton: (state, action: PayloadAction<string>) => {

@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 const Score = () => {
-  const guessedCantons = useSelector(
-    (state: RootState) => state.guessedCantons
-  );
+  const guessedCantons = useSelector((state: RootState) => state.guessedCantons);
   const score = guessedCantons.length;
 
   return (

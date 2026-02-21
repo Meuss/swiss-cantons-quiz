@@ -1,10 +1,10 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import tEn from "./locales/en/en.json";
-import tFr from "./locales/fr/fr.json";
-import tDe from "./locales/de/de.json";
-import tIt from "./locales/it/it.json";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import tEn from './locales/en/en.json';
+import tFr from './locales/fr/fr.json';
+import tDe from './locales/de/de.json';
+import tIt from './locales/it/it.json';
 
 const resources = {
   en: {
@@ -29,7 +29,7 @@ i18n
   // https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    fallbackLng: "fr",
+    fallbackLng: 'fr',
     // debug: true,
 
     interpolation: {

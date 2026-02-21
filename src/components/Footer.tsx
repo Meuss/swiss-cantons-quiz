@@ -1,7 +1,7 @@
-import LanguageIcon from "@mui/icons-material/LanguageOutlined";
-import Github from "./Footer/Github";
-import LangSwitcher from "./Footer/LangSwitcher";
-import PlayCount from "./Footer/PlayCount";
+import LanguageIcon from '@mui/icons-material/LanguageOutlined';
+import Github from './Footer/Github';
+import LangSwitcher from './Footer/LangSwitcher';
+import PlayCount from './Footer/PlayCount';
 
 const Footer = () => {
   return (

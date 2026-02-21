@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import { selectGuessedCantons } from "../store/guessedCantonsSlice";
-import { missingCantons } from "../store/remainingCantonsSlice";
-import { RootState } from "../store";
-import { createLabel, deleteLabels } from "../utils/createLabel";
-import { ReactComponent as SwissMap } from "../assets/switzerland.svg";
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { selectGuessedCantons } from '../store/guessedCantonsSlice';
+import { missingCantons } from '../store/remainingCantonsSlice';
+import { RootState } from '../store';
+import { createLabel, deleteLabels } from '../utils/createLabel';
+import { ReactComponent as SwissMap } from '../assets/switzerland.svg';
 
 const Map = () => {
   const guessedCantons = useSelector(selectGuessedCantons);
@@ -15,25 +15,25 @@ const Map = () => {
     guessedCantons.forEach((canton) => {
       const element = document.getElementById(canton);
       if (element) {
-        element.classList.add("guessed");
+        element.classList.add('guessed');
         createLabel(canton);
       }
     });
   }, [guessedCantons]);
 
   useEffect(() => {
-    if (gameStatus === "ended") {
+    if (gameStatus === 'ended') {
       Object.keys(remainingCantons).forEach((canton) => {
         const element = document.getElementById(canton);
         if (element) {
-          element.classList.add("missing");
+          element.classList.add('missing');
           createLabel(canton);
         }
       });
-    } else if (gameStatus === "idle") {
-      document.querySelectorAll("#swiss-map path").forEach((element) => {
-        element.classList.remove("guessed");
-        element.classList.remove("missing");
+    } else if (gameStatus === 'idle') {
+      document.querySelectorAll('#swiss-map path').forEach((element) => {
+        element.classList.remove('guessed');
+        element.classList.remove('missing');
         deleteLabels();
       });
     }

@@ -13,21 +13,21 @@
 
 ```bash
 # Install dependencies
-yarn
+pnpm install
 # Dev server
-yarn dev
+pnpm dev
 # Dev server with local netlify functions
 netlify dev
 # Build for production
-yarn build
+pnpm build
 # Preview production build
-yarn preview
+pnpm preview
 # Lint code
-yarn lint
+pnpm lint
 # Format code
-yarn format
+pnpm format
 # Type check code
-yarn typecheck
+pnpm typecheck
 ```
 
 ## :memo: Todo

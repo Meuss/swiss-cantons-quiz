@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
-import { giveUp } from "../../store/gameSlice";
-import { useTranslation } from "react-i18next";
-import Button from "@mui/material/Button";
+import { useDispatch } from 'react-redux';
+import { giveUp } from '../../store/gameSlice';
+import { useTranslation } from 'react-i18next';
+import Button from '@mui/material/Button';
 
 const GiveUpBtn = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const GiveUpBtn = () => {
 
   return (
     <Button onClick={onGiveUp} variant="outlined">
-      {t("ui.giveup")}
+      {t('ui.giveup')}
     </Button>
   );
 };
